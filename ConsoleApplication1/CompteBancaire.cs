@@ -14,7 +14,8 @@ namespace ConsoleApplication1
         private string Numero { get; set; }
         private float Solde { get; set; }
         private Transaction1[] ListeTransactions { get; set; }
-        private int NombreTransaction { get; set; };
+        private List<Transaction1> ListeTransactions1 { get; set; }
+        private int NombreTransaction { get; set; }
         #endregion
 
 
@@ -71,6 +72,7 @@ namespace ConsoleApplication1
             this.Numero = Numero;
             this.Solde = Solde;
             this.ListeTransactions = new Transaction1[255];
+            this.ListeTransactions1 = new List<Transaction1>();
             this.NombreTransaction = 0;
         }
 
@@ -93,6 +95,7 @@ namespace ConsoleApplication1
             };
             this.ListeTransactions[this.NombreTransaction] = tr1bis;
             this.NombreTransaction++;
+            this.ListeTransactions1.Add(tr1bis);
             this.Solde += montant;
             return this.Solde;
         }
@@ -108,6 +111,7 @@ namespace ConsoleApplication1
                 };
                 this.ListeTransactions[this.NombreTransaction] = tr1bis;
                 this.NombreTransaction++;
+                this.ListeTransactions1.Add(tr1bis);
                 this.Solde -= montant;
                 return this.Solde;
             }
