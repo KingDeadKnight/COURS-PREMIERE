@@ -9,14 +9,16 @@ namespace ConsoleApplication1
     class CompteBancaire
     {
         #region Membres de la classe
-        private string _Nom;
-        private string _Prenom;
-        private string _Numero;
-        private float _Solde;
+        private string Nom { get; set; }
+        private string Prenom { get; set; }
+        private string Numero { get; set; }
+        private float Solde { get; set; }
+        private Transaction1[] ListeTransactions { get; set; }
+        private int NombreTransaction { get; set; };
         #endregion
 
-        
-        #region Propriété de la classe
+
+        /*#region Propriété de la classe
         public string Nom
         {
             get
@@ -60,14 +62,16 @@ namespace ConsoleApplication1
                 _Solde = value;
             }
         }
-        #endregion
+        #endregion*/
 
         public CompteBancaire(String Nom, String Prenom, String Numero, float Solde = 0)
         {
-            _Nom = Nom;
-            _Prenom = Prenom;
-            _Numero = Numero;
-            _Solde = Solde;
+            this.Nom = Nom;
+            this.Prenom = Prenom;
+            this.Numero = Numero;
+            this.Solde = Solde;
+            this.ListeTransactions = new Transaction1[255];
+            this.NombreTransaction = 0;
         }
 
         public float Depot(float montant)
@@ -87,21 +91,25 @@ namespace ConsoleApplication1
                 Montant = montant,
                 Date = DateTime.Now
             };
-            _Solde += montant;
-            return _Solde;
+            this.ListeTransactions[this.NombreTransaction] = tr1bis;
+            this.NombreTransaction++;
+            this.Solde += montant;
+            return this.Solde;
         }
 
         public float Retrait(float montant)
         {
-            if(montant <= _Solde)
+            if(montant <= this.Solde)
             {
                 Transaction1 tr1bis = new Transaction1
                 {
                     Montant = montant,
                     Date = DateTime.Now
                 };
-                _Solde -= montant;
-                return _Solde;
+                this.ListeTransactions[this.NombreTransaction] = tr1bis;
+                this.NombreTransaction++;
+                this.Solde -= montant;
+                return this.Solde;
             }
             else
             {
