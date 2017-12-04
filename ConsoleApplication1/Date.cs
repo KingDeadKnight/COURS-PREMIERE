@@ -19,6 +19,23 @@ namespace ConsoleApplication1
             {
                 throw new Exception("Format de date mauvais");
             }
+            else
+            {
+                if (this.IsBissextile(Annee))
+                {
+                    if(Jour < 1 && Jour > DayByMonth[Mois -1, 1])
+                    {
+                        throw new Exception("Format de date mauvais");
+                    }
+                }
+                else
+                {
+                    if (Jour < 1 && Jour > DayByMonth[Mois - 1, 0])
+                    {
+                        throw new Exception("Format de date mauvais");
+                    }
+                }
+            }
         }
 
         private bool IsBissextile(int annee)
