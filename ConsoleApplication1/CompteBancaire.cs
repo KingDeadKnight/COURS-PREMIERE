@@ -72,10 +72,16 @@ namespace ConsoleApplication1
 
         public float Depot(float montant)
         {
-            Transaction tr = new Transaction(montant, DateTime.Now);
-            Transaction1 tr1 = new Transaction1();
-            tr1.Montant = montant;
-            tr1.Date = DateTime.Now;
+            /* Méthode 1
+             * Transaction tr = new Transaction(montant, DateTime.Now);
+             * 
+             * Méthode 2
+             * Transaction1 tr1 = new Transaction1();
+             * tr1.Montant = montant;
+             * tr1.Date = DateTime.Now;
+             *
+             * Méthode 3
+             */
             Transaction1 tr1bis = new Transaction1
             {
                 Montant = montant,
@@ -89,6 +95,11 @@ namespace ConsoleApplication1
         {
             if(montant <= _Solde)
             {
+                Transaction1 tr1bis = new Transaction1
+                {
+                    Montant = montant,
+                    Date = DateTime.Now
+                };
                 _Solde -= montant;
                 return _Solde;
             }
