@@ -79,15 +79,18 @@ namespace ConsoleApplication1
         public static Date Parse(string input)
         {
             string format = @"(\d+)\/(\d+)\/(\d+)";
-            Match match = Regex.Match(input.Trim(), format);
+            Date date;
             try
             {
-                Date date = new Date(int.Parse(match.Groups[1].Value), int.Parse(match.Groups[2].Value), int.Parse(match.Groups[3].Value));
+                Match match = Regex.Match(input.Trim(), format);
+                date = new Date(int.Parse(match.Groups[1].Value), int.Parse(match.Groups[2].Value), int.Parse(match.Groups[3].Value));
             }
             catch(Exception ex)
             {
+                date = null;
                 Console.WriteLine(ex.Message);
             }
+            return date;
         }
     }
 }
