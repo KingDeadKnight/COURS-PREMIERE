@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace ConsoleApplication1
 {
@@ -66,6 +67,27 @@ namespace ConsoleApplication1
                 }
             }
             return new Date(NouvJour, NouvMois, NouvAn);
+        }
+
+        public override string ToString()
+        {
+            //return this.Jour + "/" + this.Mois + "/" + this.Annee;
+            //return $"{this.Jour}/{this.Mois}/{this.Annee}";
+            return String.Format("{0}/{1}/{2}", this.Jour, this.Mois, this.Annee);
+        }
+
+        public static Date Parse(string input)
+        {
+            string format = @"(\d+)\/(\d+)\/(\d+)";
+            Match match = Regex.Match(input.Trim(), format);
+            try
+            {
+                Date date = new Date(int.Parse(match.Groups[1].Value), int.Parse(match.Groups[2].Value), int.Parse(match.Groups[3].Value));
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }
