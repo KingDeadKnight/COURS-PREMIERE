@@ -22,11 +22,13 @@ namespace ConsoleApplication1
             //Tp4Exercice1();
             //Tp4Exercice2();
             //Tp4Exercice3();
-            TriABulle();
+            //TriABulle();
             //Tp4Exercice4();
+            Date date = new Date(1, 2, 2010);
+            Date date1 = date + 10;
         }
 
-        static void Tp1Exercice4()
+        public void Tp1Exercice4()
         {
             try {
                 List<int> list = new List<int>();
@@ -52,7 +54,7 @@ namespace ConsoleApplication1
             }
         }
 
-        static void Tp1Exercice3()
+        public void Tp1Exercice3()
         {
             Console.Write("Quel est votre sexe ? (F/M) ");
             try
@@ -84,7 +86,7 @@ namespace ConsoleApplication1
             }
         }
 
-        static int Ask(string inconnu)
+        public int Ask(string inconnu)
         {
             try
             {
@@ -98,13 +100,13 @@ namespace ConsoleApplication1
             }
         }
 
-        static string CheckOp(string op)
+        public string CheckOp(string op)
         {
             if (op == "+" || op == "-" || op == "*" || op == "/" || op == "%") return op;
             throw new Exception("Opération inconnue");
         }
 
-        static int Calcul(int a, int b, string op)
+        public int Calcul(int a, int b, string op)
         {
             if (op == "+") return a + b;
             if (op == "-") return a - b;
@@ -114,7 +116,7 @@ namespace ConsoleApplication1
             throw new Exception("Opération impossible");
         }
 
-        static void Tp2Exercice1()
+        public void Tp2Exercice1()
         {
             bool again = true;
             while (again)
@@ -142,7 +144,7 @@ namespace ConsoleApplication1
             Console.ReadLine();
         }
 
-        static void Tp2Exercice2()
+        public void Tp2Exercice2()
         {
             try
             {
@@ -168,7 +170,7 @@ namespace ConsoleApplication1
             Console.ReadLine();
         }
 
-        static void Tp2Exercice3()
+        public void Tp2Exercice3()
         {
             bool ok = true;
             while (ok)
@@ -205,7 +207,7 @@ namespace ConsoleApplication1
             Console.ReadLine();
         }
 
-        static void Tp2Exercice4()
+        public void Tp2Exercice4()
         {
             Console.WriteLine("Introduisez le nombre de personnes: ");
             int perso = int.Parse(Console.ReadLine());
@@ -229,7 +231,7 @@ namespace ConsoleApplication1
             Console.ReadLine();
         }
 
-        static void Tp3Exercice1()
+        public void Tp3Exercice1()
         {
             try
             {
@@ -252,7 +254,7 @@ namespace ConsoleApplication1
             }
         }
 
-        static void Tp3Exercice2()
+        public void Tp3Exercice2()
         {
             try
             {
@@ -276,7 +278,7 @@ namespace ConsoleApplication1
             }
         }
 
-        static int ConvertTimeToCentSec(String time)
+        public int ConvertTimeToCentSec(String time)
         {
             string[] timea = time.Split(':');
             int sec = (int.Parse(timea[0])*60) + int.Parse(timea[1]);
@@ -284,7 +286,7 @@ namespace ConsoleApplication1
             return centsec;
         }
 
-        static String ConvertCentToTimesec(int centsec)
+        public String ConvertCentToTimesec(int centsec)
         {
             int sec = centsec / 100;
             centsec = centsec % 100;
@@ -293,7 +295,7 @@ namespace ConsoleApplication1
             return "" + min + ":" + sec + ":" + centsec;
         }
 
-        static void Tp3Exercice3()
+        public void Tp3Exercice3()
         {
             try
             {
@@ -328,7 +330,7 @@ namespace ConsoleApplication1
             }
         }
 
-        static void Tp4Exercice1()
+        public void Tp4Exercice1()
         {
             try
             {
@@ -347,7 +349,7 @@ namespace ConsoleApplication1
             }
         }
 
-        static void Tp4Exercice2()
+        public void Tp4Exercice2()
         {
             try
             {
@@ -368,7 +370,7 @@ namespace ConsoleApplication1
             }
         }
 
-        static void Tp4Exercice3()
+        public void Tp4Exercice3()
         {
             try
             {
@@ -395,7 +397,7 @@ namespace ConsoleApplication1
             }
         }
 
-        static void Tp4Exercice4()
+        public void Tp4Exercice4()
         {
             try {
                 Dictionary<string, int> article = new Dictionary<string, int>();
@@ -479,24 +481,64 @@ namespace ConsoleApplication1
             }
         }
 
-        static int CalculSurfaceRectangle(int longueur, int largeur)
+        public int CalculSurfaceRectangle(int longueur, int largeur)
         {
             return longueur * largeur;
         }
 
-        static bool DetermineMajorité(int annee)
+        public bool DetermineMajorité(int annee)
         {
             int age = CalculAge(annee);
             if (age >= 18) return true;
             return false;
         }
 
-        static int CalculAge(int annee)
+        public int CalculAge(int annee)
         {
             return 2017 - annee;
         }
 
-        static int[] Swap(int[] tab, int indexA, int indexB)
+        public bool CheckIsIn(int[] tab, int a)
+        {
+            for(int i = 0; i < tab.Length; i++)
+            {
+                if(tab[i] == a)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public int GetIndex(int[] tab, int a)
+        {
+            int index = -1;
+            for(int i = 0; i < tab.Length; i++)
+            {
+                if(tab[i] == a)
+                {
+                    index = i;
+                }
+            }
+            if(index == -1)
+            {
+                throw new Exception("Element introuvable");
+            }
+            else
+            {
+                return index;
+            }
+        }
+
+        public void InsertInTab(int[] tab, int index, int a)
+        {
+            Console.WriteLine(string.Join(",", tab));
+            List<int> temp = tab.ToList();
+            temp.Insert(index, a);
+            Console.WriteLine(string.Join(",", temp.ToArray()));
+        }
+
+        public int[] Swap(int[] tab, int indexA, int indexB)
         {
             int temp = tab[indexB];
             tab[indexB] = tab[indexA];
@@ -504,7 +546,34 @@ namespace ConsoleApplication1
             return tab;
         }
 
-        static bool CheckBissectile(int annee)
+        public int[] GrowTab(int[] tab, int size)
+        {
+            int[] res = new int[size];
+            for(int i = 0; i < size - 1; i++)
+            {
+                if(i < tab.Length)
+                {
+                    res[i] = tab[i];
+                }
+                else
+                {
+                    Console.WriteLine("Entrez une valeur:");
+                    res[i] = int.Parse(Console.ReadLine());
+                }
+            }
+            return res;
+        }
+
+        public void GiveBigAndSmall(int[] tab)
+        {
+            int[] temp = TriABulle(tab);
+            Console.WriteLine("Plus Grand : " + temp[temp.Length - 1]);
+            Console.WriteLine("Son indice est : " + GetIndex(tab, temp[temp.Length - 1]));
+            Console.WriteLine("Plus Petit : " + temp[0]);
+            Console.WriteLine("Son indice est : " + GetIndex(tab, temp[0]));
+        }
+
+        public bool CheckBissectile(int annee)
         {
             if (annee % 400 == 0) return true;
             if (annee % 100 == 0) return false;
@@ -512,7 +581,7 @@ namespace ConsoleApplication1
             return false;
         }
 
-        static bool CheckDate(int jour, int mois, int annee)
+        public bool CheckDate(int jour, int mois, int annee)
         {
             switch (mois)
             {
@@ -544,7 +613,7 @@ namespace ConsoleApplication1
             }
         }
         
-        static int DaysLived(int jour, int mois, int annee)
+        public int DaysLived(int jour, int mois, int annee)
         {
             if(CheckDate(jour, mois, annee))
             {
@@ -555,7 +624,7 @@ namespace ConsoleApplication1
             throw new Exception("Date incorrecte !");
         }
 
-        static double SinTaylor(double x)
+        public double SinTaylor(double x)
         {
             double res = x;
             int n = 1;
@@ -574,7 +643,7 @@ namespace ConsoleApplication1
             return res;
         }
 
-        static double CosTaylor(double x)
+        public double CosTaylor(double x)
         {
             double res = 1;
             int n = 1;
@@ -593,15 +662,11 @@ namespace ConsoleApplication1
             return res;
         }
 
-        static void TriABulle()
+        public int[] TriABulle(int[] t)
         {
             try
             {
                 bool res = false;
-                Console.WriteLine("Inserez une liste (chaque élément séparé par un virgule, sans espace): ");
-                string a = Console.ReadLine();
-                if (a.Contains(" ")) throw new FormatException();
-                int[] t = a.Split(',').Select(int.Parse).ToArray();
                 while (!res)
                 {
                     res = true;
@@ -614,14 +679,13 @@ namespace ConsoleApplication1
                         }
                     }
                 }
-                Console.WriteLine(string.Join(",", t));
-                Console.ReadLine();
             }
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 Console.ReadLine();
             }
+            return t;
         }
     }
 }
