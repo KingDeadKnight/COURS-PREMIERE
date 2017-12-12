@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Carte.cs" />
     <Compile Include="CompteBancaire.cs" />
     <Compile Include="Conversion.cs" />
     <Compile Include="Date.cs" />
