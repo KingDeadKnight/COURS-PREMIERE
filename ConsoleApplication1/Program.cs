@@ -26,24 +26,20 @@ namespace ConsoleApplication1
             //Tp4Exercice4();
             //Date date = new Date(1, 2, 2010);
             //Date date1 = date + 10;
-            Carte jeu1 = new Carte();
-            jeu1.ShowAll();
-            jeu1.Blend(50);
-            jeu1.ShowAll();
-            jeu1.Remove();
-            jeu1.Remove();
-            jeu1.Remove();
-            jeu1.Remove();
-            jeu1.Remove();
-            jeu1.ShowAll();
-            jeu1.Add();
-            jeu1.ShowAll();
-            //string[] tab1 = new string[] { "a", "b", "c" };
-            //string[] tab2 = new string[] { "c", "b", "d" };
-            //foreach (var i in jeu1.getDifference(tab1, tab2))
-            //{
-            //    Console.WriteLine(i);
-            //}
+            //Date test = Date.Parse("10/1/2016");
+            //Console.WriteLine(test.ToString());
+            //Carte jeu1 = new Carte();
+            //jeu1.ShowAll();
+            //jeu1.Blend(50);
+            //jeu1.ShowAll();
+            //jeu1.Remove();
+            //jeu1.Remove();
+            //jeu1.Remove();
+            //jeu1.Remove();
+            //jeu1.Remove();
+            //jeu1.ShowAll();
+            //jeu1.Add();
+            //jeu1.ShowAll();
             Console.Read();
         }
 

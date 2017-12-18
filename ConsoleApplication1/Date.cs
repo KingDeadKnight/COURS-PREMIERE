@@ -78,7 +78,7 @@ namespace ConsoleApplication1
 
         public static Date Parse(string input)
         {
-            string format = @"(\d+)\/(\d+)\/(\d+)";
+            string format = @"(\d{1,2})\/(\d{1,2})\/(\d{4}$)";
             Date date;
             try
             {
