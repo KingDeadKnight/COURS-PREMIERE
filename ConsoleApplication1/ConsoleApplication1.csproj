@@ -47,6 +47,7 @@
     <Compile Include="CompteBancaire.cs" />
     <Compile Include="Conversion.cs" />
     <Compile Include="Date.cs" />
+    <Compile Include="Naval.cs" />
     <Compile Include="Personne.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -40,6 +40,108 @@ namespace ConsoleApplication1
             //jeu1.ShowAll();
             //jeu1.Add();
             //jeu1.ShowAll();
+            //Carte jeu = new Carte();
+            //Carte main1 = new Carte(0);
+            //Carte main2 = new Carte(0);
+            //Carte bataille = new Carte(0);
+            //int vc = 0; // valeur carte
+            //int cc = 0; // couleur carte
+            //int vcm1 = 0; int ccm1 = 0; //valeur carte main 1 etc
+            //int vcm2 = 0; int ccm2 = 0;
+            //string ch = "n";
+            //int iter = 0; // pour compter le nombre de tours
+
+            //Console.WriteLine("Jeu trié");
+            //jeu.affiche_all();
+            //Console.WriteLine("Echange Random 100");
+            //jeu.melange(100);
+
+            //Console.WriteLine();
+            //jeu.affiche_all();
+            //Console.WriteLine();
+
+            //// rempli les 2 mains avec le jeu mélangé
+            //for (int i = 0; i < 26; i++)
+            //{
+            //    jeu.retire(ref vc, ref cc);
+            //    main1.ajoute(vc, cc);
+            //    jeu.retire(ref vc, ref cc);
+            //    main2.ajoute(vc, cc);
+            //}
+
+            //Console.WriteLine("Jeu vide");
+            //jeu.affiche_all();
+            //Console.WriteLine("Main1");
+            //main1.affiche_all();
+            //Console.WriteLine("Main2");
+            //main2.affiche_all();
+            //// debut du jeu
+            //while (main1.retire(ref vcm1, ref ccm1) && main2.retire(ref vcm2, ref ccm2))
+            //{
+            //    iter++;
+            //    Console.WriteLine();
+            //    Console.WriteLine(vcm1 + " " + ccm1 + ":" + vcm2 + " " + ccm2);
+            //    if (vcm1 > vcm2)
+            //    {
+            //        main1.ajoute(vcm1, ccm1);
+            //        main1.ajoute(vcm2, ccm2);
+            //        while (bataille.retire(ref vc, ref cc))
+            //        {
+            //            main1.ajoute(vc, cc);
+            //        }
+
+            //    }
+            //    if (vcm2 > vcm1)
+            //    {
+            //        main2.ajoute(vcm1, ccm1);
+            //        main2.ajoute(vcm2, ccm2);
+            //        while (bataille.retire(ref vc, ref cc))
+            //        {
+            //            main2.ajoute(vc, cc);
+            //        }
+
+            //    }
+            //    if (vcm1 == vcm2)
+            //    {
+            //        bataille.ajoute(vcm1, ccm1);
+            //        bataille.ajoute(vcm2, ccm2);
+            //        if (main1.retire(ref vc, ref cc)) bataille.ajoute(vc, cc);
+            //        if (main2.retire(ref vc, ref cc)) bataille.ajoute(vc, cc);
+            //        bataille.melange(5);
+            //    }
+            //    Console.WriteLine("Main1");
+            //    main1.affiche_all();
+            //    Console.WriteLine("Main2");
+            //    main2.affiche_all();
+            //    Console.WriteLine("bataille");
+            //    bataille.affiche_all();
+
+            //    if (iter % 100 == 0)  // remelange les mains tous les  100 tours
+            //    {
+            //        main1.melange(50);
+            //        main2.melange(50);
+            //    }
+            //    if (ch == "n") ch = Console.ReadLine(); // entrer n pour vue tour par tour
+
+
+            //}
+
+
+            //if (main1.retire(ref vc, ref cc) == false) Console.WriteLine("Main 1 Perdu");
+            //if (main2.retire(ref vc, ref cc) == false) Console.WriteLine("Main 2 Perdu");
+
+            //Console.WriteLine("Nombre de tours:" + iter);
+            //Naval gr1 = new Naval();
+            //gr1.place_all(15);
+            //Console.WriteLine("Grille 1:");
+            //gr1.affiche_all();
+            //Naval gr2 = new Naval();
+            //gr2.place_all(15);
+            //Console.WriteLine("Grille 2:");
+            //gr2.affiche_all();
+            //Console.ReadLine();
+            Console.WriteLine(Math.Sin(2));
+            Console.WriteLine(SinTaylor(2));
             Console.Read();
         }
 
@@ -639,7 +741,7 @@ namespace ConsoleApplication1
             throw new Exception("Date incorrecte !");
         }
 
-        public double SinTaylor(double x)
+        static double SinTaylor(double x)
         {
             double res = x;
             int n = 1;
@@ -650,7 +752,7 @@ namespace ConsoleApplication1
             while(Math.Abs(terme) > precision)
             {
                 tmp = (2 * n) + 1;
-                terme = (terme * x * x) / (tmp * (tmp - 1));
+                terme = Math.Pow(x, tmp) / Factorial(tmp);
                 res += (sign * terme);
                 sign *= -1;
                 n++;
@@ -658,7 +760,16 @@ namespace ConsoleApplication1
             return res;
         }
 
-        public double CosTaylor(double x)
+        static int Factorial(int x)
+        {
+            if(x == 1)
+            {
+                return 1;
+            }
+            return x * Factorial(x - 1);
+        }
+
+        static double CosTaylor(double x)
         {
             double res = 1;
             int n = 1;
@@ -669,9 +780,26 @@ namespace ConsoleApplication1
             while(Math.Abs(terme) > precision)
             {
                 tmp = 2 * n;
-                terme = Math.Pow(x, tmp) / (tmp * (tmp - 1));
+                terme = (Math.Pow(x, tmp)) / Factorial(tmp);
                 res += (sign * terme);
                 sign *= -1;
+                n++;
+            }
+            return res;
+        }
+
+        static double ExpoTaylor(double x)
+        {
+            double res = 1;
+            int n = 1;
+            int tmp;
+            double precision = 0.001;
+            double terme = x;
+            while(Math.Abs(terme) > precision)
+            {
+                tmp = n;
+                terme = Math.Pow(x, tmp) / Factorial(tmp);
+                res += terme;
                 n++;
             }
             return res;
