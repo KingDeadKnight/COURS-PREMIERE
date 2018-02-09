@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication1
 {
-    class CompteBancaire
+    class CompteBancaire:IComparable<CompteBancaire> //<T> type générique
     {
         #region Membres de la classe
         private string Nom { get; set; }
@@ -119,6 +119,11 @@ namespace ConsoleApplication1
             {
                 throw new Exception("Transaction impossible");
             }
+        }
+
+        public int CompareTo(CompteBancaire other)
+        {
+            return this.Solde.CompareTo(other.Solde);
         }
     }
 }

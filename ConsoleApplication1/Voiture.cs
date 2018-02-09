@@ -14,5 +14,7 @@ namespace ConsoleApplication1
         {
             this.NbrePlaces = NbrePlaces;
         }
+
+        
     }
 }

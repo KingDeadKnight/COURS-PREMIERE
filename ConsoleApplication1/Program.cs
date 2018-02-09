@@ -140,8 +140,18 @@ namespace ConsoleApplication1
             //Console.WriteLine("Grille 2:");
             //gr2.affiche_all();
             //Console.ReadLine();
-            Console.WriteLine(Math.Sin(2));
-            Console.WriteLine(SinTaylor(2));
+            //Console.WriteLine(Math.Sin(2));
+            //Console.WriteLine(SinTaylor(2));
+            //Vehicule v1 = new Vehicule("Test", "Test", 1, 1); Aucune raison d'être => abstract
+            Pile<int> test = new Pile<int>();
+            test.Ajouter(8);
+            test.Ajouter(5);
+            test.Ajouter(15);
+            test.Remove();
+            for(int i = 0; i < test.nbrElements; i++)
+            {
+                Console.WriteLine(test.tab[i]);
+            }
             Console.Read();
         }
 

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication1
 {
-    class Vehicule
+    abstract class Vehicule //Utilité: Ne pas pouvoir l'instancier
     {
-        private string Marque;
-        private string Modele;
+        public string Marque; //Accessible par un objet
+        private string Modele; //Non accessible par un objet ni par les classes derivées
         private int Cylindree;
-        private int Annee;
+        protected int Annee; //Non accessible par un objet mais accessible par les classes dérivées
 
         public Vehicule(string Marque, string Modele, int Cylindree, int Annee)
         {
@@ -20,5 +20,7 @@ namespace ConsoleApplication1
             this.Cylindree = Cylindree;
             this.Annee = Annee;
         }
+
+        //public abstract int GetAnnee(); Ne demande pas de corps, mais doit être défini dans les classes dérivées
     }
 }
