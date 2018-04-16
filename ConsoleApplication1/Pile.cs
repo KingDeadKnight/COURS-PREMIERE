@@ -9,8 +9,8 @@ namespace ConsoleApplication1
     class Pile<T>
     {
 
-        public T[] tab;
-        public int nbrElements;
+        private T[] tab;
+        private int nbrElements;
 
         public Pile(int nbrElements = 0)
         {
@@ -18,7 +18,16 @@ namespace ConsoleApplication1
             this.tab = new T[nbrElements];
         }
 
-        public void Ajouter(T i)
+        public int Count
+        {
+            get
+            {
+                return this.tab.Length;
+            }
+
+        }
+
+        public void Push(T i)
         {
             this.nbrElements++;
             T[] temp = new T[this.nbrElements];
@@ -27,11 +36,21 @@ namespace ConsoleApplication1
             this.tab = temp;
         }
 
-        public void Remove()
+        public void Pop()
         {
+            if(this.nbrElements == 0)
+            {
+                throw new Exception("Pile vide");
+            }
             this.nbrElements--;
             T[] temp = new T[this.nbrElements];
             Array.Copy(this.tab, temp, this.nbrElements);
+        }
+    
+        public void Clear()
+        {
+            this.tab = new T[0];
+            this.nbrElements = 0;
         }
         
     }

@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace ConsoleApplication1
+namespace ConsoleApplication1.Banque
 {
     class CompteBancaire:IComparable<CompteBancaire> //<T> type générique
     {
         #region Membres de la classe
         private string Nom { get; set; }
         private string Prenom { get; set; }
-        private string Numero { get; set; }
-        private float Solde { get; set; }
+        public string Numero { get; private set; }
+        public float Solde { get; private set; }
         private Transaction1[] ListeTransactions { get; set; }
         private List<Transaction1> ListeTransactions1 { get; set; }
         private int NombreTransaction { get; set; }
@@ -93,7 +93,7 @@ namespace ConsoleApplication1
                 Montant = montant,
                 Date = DateTime.Now
             };
-            this.ListeTransactions[this.NombreTransaction] = tr1bis;
+            //this.ListeTransactions[this.NombreTransaction] = tr1bis;
             this.NombreTransaction++;
             this.ListeTransactions1.Add(tr1bis);
             this.Solde += montant;
@@ -109,7 +109,7 @@ namespace ConsoleApplication1
                     Montant = montant,
                     Date = DateTime.Now
                 };
-                this.ListeTransactions[this.NombreTransaction] = tr1bis;
+                //this.ListeTransactions[this.NombreTransaction] = tr1bis;
                 this.NombreTransaction++;
                 this.ListeTransactions1.Add(tr1bis);
                 this.Solde -= montant;

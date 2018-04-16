@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApplication1
+namespace ConsoleApplication1.Garage
 {
     abstract class Vehicule //Utilité: Ne pas pouvoir l'instancier
     {
@@ -19,6 +19,12 @@ namespace ConsoleApplication1
             this.Modele = Modele;
             this.Cylindree = Cylindree;
             this.Annee = Annee;
+        }
+
+        public override string ToString()
+        {
+            string res = this.Marque + " " + this.Modele + " de " + this.Annee + " avec " + this.Cylindree + "CV";
+            return res;
         }
 
         //public abstract int GetAnnee(); Ne demande pas de corps, mais doit être défini dans les classes dérivées

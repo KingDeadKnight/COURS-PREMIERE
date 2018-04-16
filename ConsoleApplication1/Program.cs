@@ -143,16 +143,16 @@ namespace ConsoleApplication1
             //Console.WriteLine(Math.Sin(2));
             //Console.WriteLine(SinTaylor(2));
             //Vehicule v1 = new Vehicule("Test", "Test", 1, 1); Aucune raison d'être => abstract
-            Pile<int> test = new Pile<int>();
-            test.Ajouter(8);
-            test.Ajouter(5);
-            test.Ajouter(15);
-            test.Remove();
-            for(int i = 0; i < test.nbrElements; i++)
-            {
-                Console.WriteLine(test.tab[i]);
-            }
-            Console.Read();
+            //Vehicule[] CapaciteGarage = new Vehicule[4];
+            //CapaciteGarage[0] = new Voiture("Ferrari", "F430 Scuderia", 6000, 2010, 5);
+            //CapaciteGarage[1] = new Voiture("Maserati", "Ghibli SQ4", 3000, 2015, 5);
+            //CapaciteGarage[2] = new Camion("MAN", "TGX", 4500, 2016, 1, 1);
+            //CapaciteGarage[3] = new Camion("MAN", "TGX XL", 5600, 2017, 1 ,1);
+            //foreach (Vehicule item in CapaciteGarage)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            Console.ReadKey();
         }
 
         public void Tp1Exercice4()
@@ -430,9 +430,11 @@ namespace ConsoleApplication1
                 Console.WriteLine("Entrez un temps du type: (x)x:xx:(0)xx");
                 string a = Console.ReadLine();
                 if (!regex.IsMatch(a)) throw new Exception("Le format de temps ne correspond pas");
-                List<int> centsec = new List<int>();
-                centsec.Add(ConvertTimeToCentSec(a));
-                
+                List<int> centsec = new List<int>
+                {
+                    ConvertTimeToCentSec(a)
+                };
+
                 while (true)
                 {
                     string b = Console.ReadLine();
@@ -527,17 +529,19 @@ namespace ConsoleApplication1
         public void Tp4Exercice4()
         {
             try {
-                Dictionary<string, int> article = new Dictionary<string, int>();
-                article.Add("Frites", 1);
-                article.Add("Grande Frites", 2);
-                article.Add("Bicky", 3);
-                article.Add("Bicky 3 Sauces", 4);
-                article.Add("Mexicanos", 3);
-                article.Add("Mexicanos 3 Sauces", 4);
-                article.Add("Fricadelle", 2);
-                article.Add("Fricadelle XL", 3);
-                article.Add("Coca", 2);
-                article.Add("Fanta", 2);
+                Dictionary<string, int> article = new Dictionary<string, int>
+                {
+                    { "Frites", 1 },
+                    { "Grande Frites", 2 },
+                    { "Bicky", 3 },
+                    { "Bicky 3 Sauces", 4 },
+                    { "Mexicanos", 3 },
+                    { "Mexicanos 3 Sauces", 4 },
+                    { "Fricadelle", 2 },
+                    { "Fricadelle XL", 3 },
+                    { "Coca", 2 },
+                    { "Fanta", 2 }
+                };
                 foreach (KeyValuePair<string, int> kvp in article)
                 {
                     Console.WriteLine(kvp.Key + ": " + kvp.Value + " euros");
