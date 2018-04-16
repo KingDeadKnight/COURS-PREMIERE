@@ -126,4 +126,11 @@ namespace ConsoleApplication1.Banque
             return this.Solde.CompareTo(other.Solde);
         }
     }
+
+    public class SoldeInsuffisantException : ApplicationException
+    {
+        public SoldeInsuffisantException() : base() { }
+        public SoldeInsuffisantException(string message) : base(message) { }
+        public SoldeInsuffisantException(string message, Exception innerException) : base(message, innerException) { }
+    }
 }
